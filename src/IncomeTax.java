@@ -5,21 +5,30 @@ public class IncomeTax {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter income ");
         double income=sc.nextDouble();
-        double tax=incomeTax(income);
+        double tax=incomeTax(income*12);
         System.out.println("Income tax amount is "+tax);
 
     }
-    static double incomeTax(double i)
+    static double incomeTax(double income)
     {
-        double tax;
-        if(i<=250000)
-            tax=0;
-        else if(i<=500000)
-            tax=0.1*(i-250000);
-        else if(i<=1000000)
-            tax=(0.2*(i-500000))+10000;
-        else
-            tax=(0.4*(i-1000000))+200000;
+        double tax = 0;
+
+        if (income<=250000) {
+            tax = tax + 0;
+        } else if (income > 250000 && income <= 500000) {
+            income = income - 250000;
+            tax = income * 0.10;
+        } else if (income > 500000 && income <= 1000000) {
+            income = income - 500000;
+            tax = tax+(250000*0.10);
+            tax = tax + (income*0.20);
+        } else if (income > 1000000) {
+            income = income - 1000000;
+            tax = tax+(250000*0.10);
+            tax = tax + (500000*0.20);
+            tax = tax + (income*0.30);
+        }
+
         return tax;
 
     }
