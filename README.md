@@ -1,4 +1,7 @@
 
+![Logo](https://static.javatpoint.com/core/images/java-logo1.png)
+
+
 # Tasks
 
 This repo consists of my Tasks that I have to solve.
