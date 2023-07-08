@@ -1,5 +1,9 @@
 
-![Logo](https://static.javatpoint.com/core/images/java-logo1.png)
+
+<div align="center">
+<!--<img src="https://static.javatpoint.com/core/images/java-logo1.png" width="500px" height="300px"> -->
+<img src="./java-icon.svg" width="400px" height="400px">
+</div>
 
 
 # Tasks
