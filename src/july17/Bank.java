@@ -72,14 +72,14 @@ public class Bank {
 		}
 	}
 	
-	public boolean transaction (char type,long accountNumber,double amount,Account account1) {
-		SavingsAccount account = (SavingsAccount) account1;
+	public boolean transaction (char type,long accountNumber,double amount,Account account) {
 		for (int i = 0;i<ptr;i++) {
-			if (accounts[i].getAccountNumber() == accountNumber) {
+			account = accounts[i];
+			if (accounts[i].getAccountNumber() == accountNumber && account instanceof SavingsAccount) {
 				if (type == 'w') {
 					// withdraw
 					double c = accounts[i].getBalance()-amount;
-					if ((c*-1) <= account.getMinDepositAmount()) {
+					if ((c*-1) <= ((SavingsAccount) account).getMinDepositAmount()) {
 						accounts[i].setBalance(accounts[i].getBalance()-amount);
 						System.out.println("After Withdraw The rem Balance is :- "+accounts[i].getBalance());
 						return true;
