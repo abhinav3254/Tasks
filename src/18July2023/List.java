@@ -49,53 +49,71 @@ public class List {
 	}
 	
 	public void printAll () {
-		Node temp = head;
-		while(temp != null) {
-			System.out.println(temp.data);
-			temp = temp.next;
+		if (head == null) {
+			System.out.println("Cannot Print Empty List");
+		} else {
+			Node temp = head;
+			while(temp != null) {
+				System.out.println(temp.data);
+				temp = temp.next;
+			}
 		}
 	}
 	
 	public void deleteAtStart() {
-		head = head.next;
-		size = size-1;
+		if (head == null) {
+			System.out.println("Cannot delete anything from Empty List");
+		} else {
+			head = head.next;
+			size = size-1;
+		}
 	}
 	
 	public void deleteAtEnd() {
-		Node temp = head;
-		while (temp.next.next!=null) {
-			temp = temp.next;
+		if (head == null) {
+			System.out.println("Cannot delete anything from Empty List");
+		} else {
+			Node temp = head;
+			while (temp.next.next!=null) {
+				temp = temp.next;
+			}
+			tail = temp.next;
+			tail.next = null;
+			temp.next = null;
+			size = size - 1;
 		}
-		tail = temp.next;
-		tail.next = null;
-		temp.next = null;
-		size = size - 1;
 	}
 	
 	public void deleteAt(int index) {
-		if (size < 0) {
+		if (head == null) {
 			System.out.println("Empty List");
-			return;
-		} else if (index >= size) {
-			System.out.println("Wrong index");
-			return;
-		} else if (index == size - 1) {
-			deleteAtEnd();
-			return;
-		} else if (index == 0) {
-			deleteAtStart();
-			return;
-		}else{
-			Node temp = head;
-			Node temp2 = head.next;
-			int i = 0;
-			while (++i < index) {
-				temp = temp2;
-				temp2 = temp2.next;
+		}else {
+
+			if (size < 0) {
+				System.out.println("Empty List");
+				return;
+			} else if (index >= size) {
+				System.out.println("Wrong index");
+				return;
+			} else if (index == size - 1) {
+				deleteAtEnd();
+				return;
+			} else if (index == 0) {
+				deleteAtStart();
+				return;
+			}else{
+				Node temp = head;
+				Node temp2 = head.next;
+				int i = 0;
+				while (++i < index) {
+					temp = temp2;
+					temp2 = temp2.next;
+				}
+				temp.next = temp2.next;
+				size = size - 1;
+				return;
 			}
-			temp.next = temp2.next;
-			size = size - 1;
-			return;
+		
 		}
 	}
 }
