@@ -1,6 +1,7 @@
 class Queue<T> {
     private arr:T[];
     private ptr : number = -1;
+	private lastPtr : number = -1;
 
     constructor () {
         this.arr = [];
@@ -25,12 +26,13 @@ class Queue<T> {
         if (this.isEmpty()) {
             console.log('Empty Queue');
         } else {
-            console.log(this.arr[this.ptr--]);
+            console.log(this.arr[++this.lastPtr]);
         }
     }
 
     private isEmpty() : boolean {
         if (this.ptr < 0) {
+			this.lastPtr = -1;
             return true;
         }
         return false;
