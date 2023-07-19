@@ -1,11 +1,11 @@
-package assignment;
+package july19;
 
-public class List {
-	Node head = null;
-	Node tail = null;
+public class List<T> {
+	Node<T> head = null;
+	Node<T> tail = null;
 	int size = -1;
-	public void addElement(int data) {
-		Node node = new Node(data);
+	public void addElement(T data) {
+		Node<T> node = new Node<T>(data);
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -19,9 +19,9 @@ public class List {
 		size = size+1;
 	}
 	
-	public void addAtStart(int data) {
-		Node temp = null;
-		Node node = new Node(data);
+	public void addAtStart(T data) {
+		Node<T> temp = null;
+		Node<T> node = new Node<T>(data);
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -33,8 +33,8 @@ public class List {
 		size = size + 1;
 	}
 	
-	public void addAtLast(int data) {
-		Node node = new Node(data);
+	public void addAtLast(T data) {
+		Node<T> node = new Node<T>(data);
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -52,11 +52,12 @@ public class List {
 		if (head == null) {
 			System.out.println("Cannot Print Empty List");
 		} else {
-			Node temp = head;
+			Node<T> temp = head;
 			while(temp != null) {
-				System.out.println(temp.data);
+				System.out.print(temp.data+" --> ");
 				temp = temp.next;
 			}
+			System.out.println(" null ");
 		}
 	}
 	
@@ -73,13 +74,12 @@ public class List {
 		if (head == null) {
 			System.out.println("Cannot delete anything from Empty List");
 		} else {
-			Node temp = head;
-			while (temp.next.next!=null) {
+			Node<T> temp = head;
+			while (temp.next!=tail) {
 				temp = temp.next;
 			}
-			tail = temp.next;
-			tail.next = null;
 			temp.next = null;
+			tail = temp;
 			size = size - 1;
 		}
 	}
@@ -102,8 +102,8 @@ public class List {
 				deleteAtStart();
 				return;
 			}else{
-				Node temp = head;
-				Node temp2 = head.next;
+				Node<T> temp = head;
+				Node<T> temp2 = head.next;
 				int i = 0;
 				while (++i < index) {
 					temp = temp2;
@@ -118,11 +118,11 @@ public class List {
 	}
 }
 
-class Node {
-	int data;
-	Node next;
+class Node<T> {
+	T data;
+	Node<T> next;
 	
-	public Node (int data) {
+	public Node (T data) {
 		this.data = data;
 		this.next = null;
 	}
